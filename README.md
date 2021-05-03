@@ -95,14 +95,15 @@ Enumerating objects: 7, done.
 Counting objects: 100% (7/7), done.
 Delta compression using up to 12 threads
 Compressing objects: 100% (4/4), done.
-Writing objects: 100% (6/6), 556 bytes | 556.00 KiB/s, done.
+Writing objects: 100% (6/6), 558 bytes | 558.00 KiB/s, done.
 Total 6 (delta 1), reused 0 (delta 0)
-remote:
-remote: To create a merge request for MyNewBranch, visit:
-remote:   https://cwincloud.cc.umanitoba.ca/alexcybera/git-tutorial/-/merge_requests/new?merge_request%5Bsource_branch%5D=MyNewBranch
-remote:
-To https://cwincloud.cc.umanitoba.ca/alexcybera/git-tutorial.git
- * [new branch]      MyNewBranch -> MyNewBranch
+remote: Resolving deltas: 100% (1/1), done.
+remote: 
+remote: Create a pull request for 'MyNewBranch' on GitHub by visiting:
+remote:      https://github.com/cybera/GithubIntroduction/pull/new/NewBranch
+remote: 
+To https://github.com/cybera/GithubIntroduction.git
+ * [new branch]      NewBranch -> NewBranch
 Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 ```
 
