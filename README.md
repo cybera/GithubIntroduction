@@ -274,11 +274,11 @@ HEAD is now at 2d2e79a other message
 
 Where the output is telling you the commit message of the commit we have now returned to. This will have removed all local changes before hand, but will take you back to a place where hopefully things were functional.
 
-We then have to push this roll back back to gitlab with
+We then have to push this roll back back to github with
 
 ```bash
 git push origin --force
 ```
 
-Where we're saying to push our current state, our roll backed commit,  `origin` to the repo, and to force it ignoring that changes on git lab. 
+Where we're saying to push our current state, our roll backed commit,  `origin` to the repo, and to force it ignoring that changes on git hub. 
 
