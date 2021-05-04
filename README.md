@@ -1,5 +1,3 @@
-Laura's test change
-
 # Processes Covered In The Git Tutorial (With Expected Outputs)
 
 Note: this is not an exhaustive tutorial, but should be enough to get you started. There is A LOT to learn with git, but for the most part, the contents of this tutorial should cover about 90% of the things you as a contributor will need to know.
