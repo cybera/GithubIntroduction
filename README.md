@@ -208,8 +208,7 @@ index f81fce0..980b369 100644
 +adding other stuff
 ```
 
-Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between our local file, and the file we've committed to gitlab. In this case it is telling us that the changes start from the first line `-1` and go to a new line `+1`, and this new line is line `2`. Below is a list of the changes made.
-
+Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between our local file, and the file we've committed to github. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line. 
 # Tracking Changes and Recovering When Things Go Wrong
 
 ## Change Tracking
