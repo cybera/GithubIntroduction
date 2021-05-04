@@ -1,6 +1,8 @@
-# Processes Covered In The Git Tutorial (With Expected Outputs) 
+Laura's test change
 
-Note: this is not an exhaustive tutorial, but should be enough to get you started. There is A LOT to learn with git, but for the most part, the contents of this tutorial should cover about 90% of the things you as a contributor will need to know. 
+# Processes Covered In The Git Tutorial (With Expected Outputs)
+
+Note: this is not an exhaustive tutorial, but should be enough to get you started. There is A LOT to learn with git, but for the most part, the contents of this tutorial should cover about 90% of the things you as a contributor will need to know.
 
 # Installing Git Locally:
 1. MacOS: `brew install git` or `https://sourceforge.net/projects/git-osx-installer/`
@@ -37,16 +39,16 @@ To begin, if you're making changes to someone elses repository, or if you're col
 $ git checkout -b MyNewBranch
 Switched to a new branch 'MyNewBranch'
 ```
-You can return to your previous branch at any time with `git checkout AnotherBranch` 
+You can return to your previous branch at any time with `git checkout AnotherBranch`
 
-Now that you're on your new branch, let's create some files 
+Now that you're on your new branch, let's create some files
 
 ```bash
 echo "file contents" > myfile.txt
 echo "other file contents" > myotherfile.text
 ```
 
-then let's see our git changes 
+then let's see our git changes
 
 ```bash
 git status
@@ -64,7 +66,7 @@ where we can now add these files to github and commit them :
 
 ```bash
 git add myfile.txt
-git commit -m “i am committing my first file to my branch” 
+git commit -m “i am committing my first file to my branch”
 
 [MyNewBranch 99e3f21] adding a file
  1 file changed, 1 insertion(+)
@@ -72,12 +74,12 @@ git commit -m “i am committing my first file to my branch”
 ```
 And the other
 ```bash
-git add myotherfile.txt 
+git add myotherfile.txt
 git commit -m “a am adding the second file to my branch”
 ```
-Finally we push: 
+Finally we push:
 
-```bash 
+```bash
 git push
 
 fatal: The current branch MyNewBranch has no upstream branch.
@@ -98,10 +100,10 @@ Compressing objects: 100% (4/4), done.
 Writing objects: 100% (6/6), 558 bytes | 558.00 KiB/s, done.
 Total 6 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), done.
-remote: 
+remote:
 remote: Create a pull request for 'MyNewBranch' on GitHub by visiting:
 remote:      https://github.com/cybera/GithubIntroduction/pull/new/NewBranch
-remote: 
+remote:
 To https://github.com/cybera/GithubIntroduction.git
  * [new branch]      NewBranch -> NewBranch
 Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
@@ -109,7 +111,7 @@ Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 
 Where we can now check if it worked
 
-```bash 
+```bash
 git status
 
 On branch MyNewBranch
@@ -120,7 +122,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 # Preventing Yourself From Committing Things You Shouldn't
 
-Suppose we have all our passwords stored in a file in our git directory. It would be a very bad idea to commit that. For example, suppose our directory looks like this: 
+Suppose we have all our passwords stored in a file in our git directory. It would be a very bad idea to commit that. For example, suppose our directory looks like this:
 
 ```bash
 git status
@@ -147,7 +149,7 @@ LocationOfGold:  -48.876667, -123.393333
 
 We certainly don't want to commit that. But sometimes we need to have our passwords to access data/other resources. How do we make sure we don't accidentally send these to gitlab?
 
-With a "hidden" file called `.gitignore` , where we can list the files, directories, or filetypes that we don't want to commit to github. So let's create that 
+With a "hidden" file called `.gitignore` , where we can list the files, directories, or filetypes that we don't want to commit to github. So let's create that
 
 ```bash
 echo "all_my_passwords.txt" >> .gitignore
@@ -158,11 +160,11 @@ all_my_passwords.txt
 *.pdf
 ```
 
-And now, if we type `git status` we will see that out passwords are still untracked. However, if we commit this to git 
+And now, if we type `git status` we will see that out passwords are still untracked. However, if we commit this to git
 
 ```bash
 git add .gitignore
-git commit -m "adding files to ignore on git" 
+git commit -m "adding files to ignore on git"
 git push
 ```
 
@@ -208,14 +210,14 @@ index f81fce0..980b369 100644
 +adding other stuff
 ```
 
-Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between our local file, and the file we've committed to github. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line. 
+Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between our local file, and the file we've committed to github. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line.
 # Tracking Changes and Recovering When Things Go Wrong
 
 ## Change Tracking
 
 To see how your files have progressed, you can use `git log` as follows
 
-```bash git log 
+```bash git log
 
 commit 38bb03af02f94b159b7f39c4bcc01bd01068b990 (HEAD -> MyNewBranch, origin/MyNewBranch)
 Author: AlexIsBadWithComputers <alex.tennant@cybera.ca>
@@ -248,11 +250,11 @@ Where you may have to press enter to scroll to the bottom, and press `q` to quit
 ## File Recovery
 
 ### Single File
-**Caution:** back up your mistakes before doing any of the following as un-committed local changes will be **lost forever** 
+**Caution:** back up your mistakes before doing any of the following as un-committed local changes will be **lost forever**
 
 If you've modified a file and have broken it beyond repair from the last git commit, you can easily recover this single file with `git checkout` as follows
 
-```bash 
+```bash
 git checkout filename
 
 Updated 1 path from the index
@@ -262,7 +264,7 @@ Where that one file will now be returned to the most recent commit on github. Fo
 
 Step 1: Find the hash id of a good commit from the output of `git log`
 
-Step 2: reset your local instance 
+Step 2: reset your local instance
 
 ```bash
 git reset --hard 2d2e79a74edeccfb90ee5a22b315705cecc6d1e7
@@ -279,5 +281,4 @@ We then have to push this roll back back to github with
 git push origin --force
 ```
 
-Where we're saying to push our current state, our roll backed commit,  `origin` to the repo, and to force it ignoring that changes on git hub. 
-
+Where we're saying to push our current state, our roll backed commit,  `origin` to the repo, and to force it ignoring that changes on git hub.
