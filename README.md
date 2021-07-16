@@ -19,29 +19,34 @@ Notes:
 3. Test if you have git already installed: `git --version`
 
 # Version Control
-Let's forget about Github for a bit and only focus on Git at the moment. The most important feature it has is the version control. Why do we like it? It keeps copies of your previous versions of code and can recover you from failure when something went wrong (by reverting back to previous versions).
+Let's forget about Github for a bit and only focus on Git at the moment. The most important feature it has is the **version control**. 
+
+This feature keeps track of the previous versions of your work, and can recover you from failure when something went wrong by reverting back to previous versions. To better understand this idea, let's take a look at this **working tree** visualization. 
 
 [placeholder for viz]. 
 
-In the git terminology, we call those versions "commits". Let's start by creating a repo(sitory) and initializing Git in it. This tells git to treat your current directory as a Git repo(sitory)
+As shown in this visualization, each node in the working tree is a version, which is essentially a snapshot of all files when the node is created. In the git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". Let's see how it actually works in the following experiment.
+
+
+### Commit changes
+First, we create a repo(sitory) and initializing Git in it. This tells git to treat your current directory as a git repo(sitory). Git will create a hidden folder called ".git" in the current directory. Note this ```git init``` command is one-time-only: once a git repo is established, you don't need to re-init it when committing any changes.
 
 ```
 $ mkdir git-intro
 $ cd git-intro
-$ git init .
+$ git init . # use . to identify the current directory as a git repo
 ```
 
-### Commit changes
-Now let's create a few dummy files.
+Then let's create a few dummy files to play our experiment on.
 
 ```
 $ echo "file contents" > myfile.txt
 $ echo "other file contents" > myotherfile.txt
 $ ls
-myfile.txt		myotherfile.txt
+myfile.txt		myotherfile.txt  
 ```
 
-Use ```git status``` to check what's changed since last commit. From the message, you will see that we have two **untracked** files. This is because we just created them and yet haven't **commit** this change.
+Now use ```git status``` to check what's changed since last commit. Since we haven't committed any changes, the message indicate we have "No commits yet". It also prompted us that we have two "**untracked**" files. This is because we just created them and yet haven't commit this change.
 
 ```
 $ git status
@@ -58,8 +63,12 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Now, let's try **track** these two files and commit this change. A **commit** is a node in the diagram above. This sets a version where you can roll back your project to when something went wrong.   
-Note: you will notice we have two steps here ```git add``` and ```git commit```. [Here] explains their difference and why we need to have them both.
+Now, let's try **track** these two files and commit this change. 
+
+```git add``` is the command that adds files that you want to track into a "**staging area**". The staging area serves as an intermediate space before you actually commit the changes. You can add new files into, remove files from, and modify files in the staging area without making any actual commit. Once the files are put into the staging area, they are considered as "**tracked**".
+
+```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. What the command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. "Commit often!" because when some parts of your work went wrong, you roll back your project to a previous commit and start over.   
+
 
 ```
 $ git add myfile.txt
@@ -151,6 +160,7 @@ file contents
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
 
+TODO: add, commit, remove
 
 # Collaboration
 ## Interacting with Github
@@ -356,7 +366,6 @@ Date:   Fri Jul 9 00:29:37 2021 -0600
 
 ```
 
-
 ### Pull request
 Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier.
 
@@ -437,6 +446,10 @@ all_my_passwords.txt
 Use -f if you really want to add them.
 ```
 
+## Github desktop
+TODO?
 
-
+## Additional resources
+- A useful cheatsheet: http://rogerdudler.github.io/git-guide/
+- The git documentation is always your best friend: https://git-scm.com/docs
 
