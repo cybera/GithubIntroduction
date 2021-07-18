@@ -160,7 +160,6 @@ file contents
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
 
-TODO: add, commit, remove
 
 # Collaboration
 ## Interacting with Github
@@ -447,7 +446,7 @@ Use -f if you really want to add them.
 ```
 
 ## Github desktop
-TODO?
+https://desktop.github.com/
 
 ## Additional resources
 - A useful cheatsheet: http://rogerdudler.github.io/git-guide/
