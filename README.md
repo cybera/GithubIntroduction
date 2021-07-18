@@ -23,7 +23,7 @@ Let's forget about Github for a bit and only focus on Git at the moment. The mos
 
 This feature keeps track of the previous versions of your work, and can recover you from failure when something went wrong by reverting back to previous versions. To better understand this idea, let's take a look at this **working tree** visualization. 
 
-[placeholder for viz]. 
+![Image of Git working tree](https://github.com/cybera/GithubIntroduction/blob/jerric/resources/Git.png)
 
 As shown in this visualization, each node in the working tree is a version, which is essentially a snapshot of all files when the node is created. In the git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". Let's see how it actually works in the following experiment.
 
@@ -228,7 +228,9 @@ To https://github.com/TeppieC/github-intro.git
 Now check your github repo and you will see this commit, so do your teammates.
 
 ## Using branches
-If you're making changes to someone elses repository, or if you're collaborating with someone, or even just trying something new, Git offers a great option called "branch(es)". [Branch viz]
+If you're making changes to someone elses repository, or if you're collaborating with someone, or even just trying something new, Git offers a great option called "branch(es)". 
+
+![Demo of branch](https://github.com/cybera/GithubIntroduction/blob/jerric/resources/Github.png)
 
 To see all available branches. You will notice some of them are local branches and some are remote ones. 
 
