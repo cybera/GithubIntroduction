@@ -207,11 +207,12 @@ Till now, we are solely working locally. In the next section, let's talk about w
 
 # Collaboration
 ## Interacting with Github
-Github is an extension of Git. It is a open-source community where you can share yours and access other's work, or use it as a tool to collaborate with others and manage the project. Create your account here if you haven't done so.
-ssh key?
+Github is an extension of Git. It is a open-source community where you can share yours and access other's work, or use it as a tool to collaborate with others and manage the project. 
 
 ### Creating a repo
-Github manages software projects in the way of **repo(es)**. To host your code on github and collaborate with your teammates, you'll need to create a **remote** repo(sitory) that is accessible to your teammates. They are default to public repos so that every one can see it. With github student pack, you can create private repos and share it only to your collaborators.
+Github manages software projects in the way of **repo(es)**. To host your code on github and collaborate with your teammates, you'll need to create a **remote** repo that is at least accessible to your teammates. They are default to be public repos so that every one can see it. With github student pack, you can create private repos and share it only to your collaborators.
+
+Now let's try to create a repo.
 
 ### Clone
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
