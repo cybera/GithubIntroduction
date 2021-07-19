@@ -23,19 +23,22 @@ Let's forget about Github for a bit and only focus on Git at the moment. The mos
 
 This feature keeps track of the previous versions of your work, and can revert your project back to previous versions when something went wrong. To better understand this idea, let's take a look at the following **working tree** visualization. 
 
-As shown in this visualization, each node in the working tree is a version, which is essentially a snapshot of all files when the node is created. In the git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". Note the English word "commit" can be both a verb and a noun here.
+As shown here, each node in the working tree is a version, which is essentially a snapshot of all files when the node is created. In the git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". Note the English word "commit" can be both a verb and a noun here.
 
 ![Image of Git working tree](https://github.com/cybera/GithubIntroduction/blob/jerric/resources/Git.png)
 
-Let's see how it actually works in the following experiment.
+Let's see how it actually works in the following experiment in my terminal.
 
 ### Init Git, Add and Commit changes
-First, we create a repo(sitory) and initializing Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
+First, we create a directory and initialize Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
 
 ```
 $ mkdir git-intro
 $ cd git-intro
 $ git init . # use . to identify the current directory as a git repo
+Initialized empty Git repository in /Users/jerric/workspace/workshop/git-intro/.git/
+$ ls -a
+.	..	.git
 ```
 
 Then let's create a few dummy files to play our experiment on.
@@ -44,7 +47,7 @@ Then let's create a few dummy files to play our experiment on.
 $ echo "file contents" > myfile.txt
 $ echo "other file contents" > myotherfile.txt
 $ ls -a
-myfile.txt		myotherfile.txt           .git
+.	..	.git      myfile.txt		myotherfile.txt
 ```
 
 Use ```git status``` to check what's been changed since last commit. Since we haven't committed any changes, the message indicate we have "No commits yet". It also prompted us that we have two "**untracked**" files. This is because we just created them and yet haven't commit this change.
@@ -52,7 +55,7 @@ Use ```git status``` to check what's been changed since last commit. Since we ha
 ```
 $ git status
 
-On branch master
+On branch main
 
 No commits yet
 
@@ -68,18 +71,30 @@ Now, let's try **track** these two files and commit this change. To commit a cha
 
 ```git add``` is the command that adds files that you want to track into a "**staging area**". The staging area serves as an intermediate space before you actually commit the changes. You can add new files into, remove files from, and modify files in the staging area without making any actual commit. Once the files are put into the staging area, they are considered as "**tracked**" files.
 
-```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More technically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. So the rule of thumb is "commit often" because when some parts of your work went wrong, you roll back your project to a previous commit and start over. 
-
-Let's try them here.
-
 ```
 $ git add myfile.txt
 $ git add myotherfile.txt
+$ git status
+
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   myfile.txt
+	new file:   myotherfile.txt
+```
+
+```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More technically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. 
+
+```
 $ git commit -m 'created two txt files'
 
-[master (root-commit) a98898c] created two txt files
-1 file changed, 1 insertion(+)
+[main (root-commit) cf34f6a] created two txt files
+ 2 files changed, 2 insertions(+)
  create mode 100644 myfile.txt
+ create mode 100644 myotherfile.txt
 ```
 
 Use ```git log``` to check the commit history. Where you may have to press enter to scroll to the bottom, and press `q` to quit. Above we see a complete list of all the changes that we have made, as well as the unique hash id of each commit. This hash id becomes important later. But essentially what we have here is a list of changes made, when they were made, and by whom they were made.
@@ -175,6 +190,7 @@ $ cat myfile.txt
 
 file contents
 ```
+So the rule of thumb is "commit often" because when some parts of your work went wrong, you roll back your project to a previous commit and start over. 
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
 
