@@ -15,8 +15,8 @@ Note: this is not an exhaustive tutorial, but should be enough to get you starte
 Notes:
 
 1. By "locally" we mean on the end of your workspace. If you installed it in your desktop but tried to use it on a VM, it won't work.
-2. How to install Github? --> you don't have to if you follow this tutorial.
-3. Test if you have git already installed: `git --version`
+2. Test if you have git already installed: `git --version`
+3. How to install Github? --> you don't have to if you follow this tutorial.
 
 # Version Control
 Let's forget about Github for a bit and only focus on Git at the moment. The most important feature it has is the **version control**. 
@@ -198,7 +198,7 @@ Now let's try to create a repo.
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
 
 ```bash
-$ git clone https://github.com/TeppieC/github-intro.git
+$ git clone https://github.com/TeppieC/github-intro2.git
 
 Cloning into 'github-intro'...
 remote: Enumerating objects: 3, done.
@@ -206,7 +206,7 @@ remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 
-$ cd github-intro
+$ cd github-intro2
 ```
 
 Then as a sanity check, let's type the following
@@ -246,7 +246,7 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 311 bytes | 311.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/TeppieC/github-intro.git
+To https://github.com/TeppieC/github-intro2.git
    9abb950..8397048  main -> main
 
 ```
@@ -358,9 +358,9 @@ Writing objects: 100% (3/3), 358 bytes | 358.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 remote: 
 remote: Create a pull request for 'MyNewBranch' on GitHub by visiting:
-remote:      https://github.com/TeppieC/github-intro/pull/new/MyNewBranch
+remote:      https://github.com/TeppieC/github-intro2/pull/new/MyNewBranch
 remote: 
-To https://github.com/TeppieC/github-intro.git
+To https://github.com/TeppieC/github-intro2.git
  * [new branch]      MyNewBranch -> MyNewBranch
 Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 ```
