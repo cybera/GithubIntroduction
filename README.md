@@ -220,7 +220,13 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 ```
 
-Note: Apart from the above method, github provides a few more ways to hook up the remote with local repos. For example, you can also push your local directory to github.
+Note: Apart from the above method, github provides a few more ways to hook up the remote with local repos. For example, you can also push your local directory with codes to github. 
+
+```
+git remote add origin https://github.com/TeppieC/git-intro.git
+git branch -M main
+git push -u origin main
+```
 
 ### Pull
 The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since your last pull/clone, it prompts us with "already up to date". 
