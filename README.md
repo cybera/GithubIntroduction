@@ -110,32 +110,13 @@ Date:   Thu Jul 8 22:56:15 2021 -0600
 ```
 
 
-### Track changes
-Now, to demostrate how this version control can work, let's change our files a little bit:
+### Track changes and Recover from changes
+
+Now, to demostrate how this version control can work, let's change our files a little bit and commit this change so as to create another version of the project
 
 ```
-echo "adding other stuff" >> myfile.txt
-echo “also here” >> myotherfile.txt
-```
-we can see these changes with `git diff filename`
-
-```
-$ git diff myfile.txt
-
-diff --git a/myfile.txt b/myfile.txt
-index d03e242..b451dd0 100644
---- a/myfile.txt
-+++ b/myfile.txt
-@@ -1 +1,2 @@
- file contents
-+adding other stuff
-```
-
-Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between the current file, and how this file looks like in the last commit. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line. 
-
-Now let's commit this change and create another version of the project.
-
-```
+$ echo "adding other stuff" >> myfile.txt
+$ echo “also here” >> myotherfile.txt
 $ git add myfile.txt
 $ git add myotherfile.txt
 $ git commit -m 'made changes to the two files'
@@ -143,7 +124,6 @@ $ git commit -m 'made changes to the two files'
  2 files changed, 2 insertions(+)
 ```
 
-### Recover from changes
 Now, since we have two commits, let's experiment on the roll-back feature: Suppose you made some more changes to myfile.txt beyond our last commit and are not satisfied with our recent change, you can easily recover this single file with `git checkout` as follows
 
 ```
