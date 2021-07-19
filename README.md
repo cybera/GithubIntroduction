@@ -287,7 +287,7 @@ $ git checkout MyNewBranch
 Switched to branch 'MyNewBranch'
 ```
 
-this will copy all the code of the branch you're currently on, into a new branch where you don't have to worry about ruining someone's (or your own) hard work. This can be done with the following git command. You can return to your previous branch at any time with `git checkout AnotherBranch` 
+this will copy all the code of the branch you're currently on, into a new branch where you don't have to worry about ruining someone's (or your own) hard work. This can be done with the following git command. You can return to your previous branch at any time with `git checkout [AnotherBranch]` 
 
 Now that you're on your new branch, let's create a new file
 
@@ -428,10 +428,6 @@ Where the contents of `all_my_passwords.txt` is as follows:
 
 ```
 netflix: SuperSecretSuperSecurePasswordIHopeNoOneGetsToReadThatWouldBeBad
-bank: 12345
-socialSecurityNumber: 123678445
-visa: 4520123412341234
-LocationOfGold:  -48.876667, -123.393333
 ```
 
 We certainly don't want to commit that. But sometimes we need to have our passwords to access data/other resources. How do we make sure we don't accidentally send these to github?
