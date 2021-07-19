@@ -86,7 +86,7 @@ Changes to be committed:
 	new file:   myotherfile.txt
 ```
 
-```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More technically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. 
+```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More technically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. Note we usually use ```-m``` flag to append some messages to describe what've been done in this commit.
 
 ```
 $ git commit -m 'created two txt files'
@@ -131,7 +131,7 @@ index d03e242..b451dd0 100644
 +adding other stuff
 ```
 
-Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between our local file, and the file we've committed to github. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line. 
+Where there's a lot going on in this file. However, for the most part what we're most often interested in is the lines starting at `@@ -1 +1, 2 @@`. This line describes where the changes take place between the current file, and how this file looks like in the last commit. Here the `-1` indicates the change has taken place in the first line, and the `+1, 2` indicates that we have gained two additional lines at the first line. 
 
 Now let's commit this change and create another version of the project.
 
@@ -139,26 +139,35 @@ Now let's commit this change and create another version of the project.
 $ git add myfile.txt
 $ git add myotherfile.txt
 $ git commit -m 'made changes to the two files'
+[main 414c43b] made changes to the two files
+ 2 files changed, 2 insertions(+)
 ```
 
 ### Recover from changes
-Now, let's experiment on the roll-back feature: Suppose you made some more changes to myfile.txt beyond our last commit and are not satisfied with our recent change, you can easily recover this single file with `git checkout` as follows
+Now, since we have two commits, let's experiment on the roll-back feature: Suppose you made some more changes to myfile.txt beyond our last commit and are not satisfied with our recent change, you can easily recover this single file with `git checkout` as follows
 
 ```
 $ echo "adding other stuff for the second time" >> myfile.txt 
+
+$ cat myfile.txt
+file contents
+adding other stuff
+adding other stuff for the second time
+
 $ git checkout myfile.txt
 
 Updated 1 path from the index
 ```
 
-Where that one file will now be returned to the most recent commit on your **working tree**. 
+Note that one file will now be returned to the most recent commit on your **working tree**. 
 
 ```
 $ cat myfile.txt
+file contents
 adding other stuff
 ```
 
-For larger mistakes, you may have to revert your whole local copy to a previous commit with the following:
+For larger mistakes, you may have to revert your whole local project to a previous commit with the following steps:
 
 - Step 1: Find the hash id of a good commit from the output of `git log`
 - Step 2: reset to this version
@@ -167,22 +176,22 @@ Where the output is telling you the commit message of the commit we have now ret
 
 How do we trace back to previous versions then? Suppose you are not satisfied with the recent change to myfile.txt and want to roll back to the previous version, all you need is to 
 
-```
+```bash
 $ git log
 
-commit 9ad6f2e7c001ab31aebd3b7599dcd90396486b7b (HEAD -> master)
-Author: Jerric Chen <jerric@Jerrics-MacBook-Air.local>
-Date:   Thu Jul 8 23:25:28 2021 -0600
+commit 414c43b409702338f74dee46faac37e6467d3bcf (HEAD -> main)
+Author: TeppieC <jerric.chen@cybera.ca>
+Date:   Mon Jul 19 16:30:12 2021 -0600
 
     made changes to the two files
 
-commit a98898cda9cb78f18951a588cd288ae675e3cda0
-Author: Jerric Chen <jerric@Jerrics-MacBook-Air.local>
-Date:   Thu Jul 8 22:56:15 2021 -0600
+commit cf34f6a0f371b048527a6eec41dc441ac4510e7e
+Author: TeppieC <jerric.chen@cybera.ca>
+Date:   Mon Jul 19 16:16:52 2021 -0600
 
     created two txt files
     
-$ git reset --hard a98898cda9cb78f18951a588cd288ae675e3cda0
+$ git reset --hard cf34f6a0f371b048527a6eec41dc441ac4510e7e
 
 HEAD is now at a98898c created two txt files
 
@@ -190,7 +199,8 @@ $ cat myfile.txt
 
 file contents
 ```
-So the rule of thumb is "commit often" because when some parts of your work went wrong, you roll back your project to a previous commit and start over. 
+
+So the rule of thumb is "commit often" because when some parts of your work went wrong, you can always rely on this benefit of git to roll back your project to a previous commit and start over. 
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
 
