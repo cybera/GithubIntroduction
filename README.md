@@ -474,10 +474,10 @@ all_my_passwords.txt
 Use -f if you really want to add them.
 ```
 
-## Github desktop
+# Github desktop
 https://desktop.github.com/
 
-## Additional resources
+# Additional resources
 - A useful cheatsheet: http://rogerdudler.github.io/git-guide/
 - The git documentation is always your best friend: https://git-scm.com/docs
 
