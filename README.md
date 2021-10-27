@@ -198,7 +198,7 @@ Now let's try to create a repo.
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
 
 ```bash
-$ git clone https://github.com/TeppieC/github-intro2.git
+$ git clone https://github.com/TeppieC/git-intro2.git
 
 Cloning into 'github-intro'...
 remote: Enumerating objects: 3, done.
