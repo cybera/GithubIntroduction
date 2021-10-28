@@ -180,6 +180,21 @@ $ cat myfile.txt
 file contents
 ```
 
+Using git reset is good for changes on a local copy that you
+definetly don't want to keep anymore. If you have pushed changes to a remote, however, git reset can cause difficulties for others. You can 
+also use `git revert <sha>` to revert a particular commit or 
+`git revert HEAD~N` to revert the last N commits. Revert also allows for 
+removing individual "bad" commits, whereas reset deletes everything 
+back to the desired commit.
+You can try revert after recreating the changes outlined above by copying the commands below.
+```
+echo "adding other stuff" >> myfile.txt
+echo “also here” >> myotherfile.txt
+git commit -a -m "Changed both example files"
+echo "adding other stuff for the second time" >> myfile.txt 
+git commit -a -m "Update #2 on single file"
+```
+
 So the rule of thumb is "commit often" because when some parts of your work went wrong, you can always rely on this benefit of git to roll back your project to a previous commit and start over. 
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
@@ -198,15 +213,17 @@ Now let's try to create a repo.
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
 
 ```bash
-$ git clone https://github.com/TeppieC/git-intro2.git
+$ git clone https://github.com/cybera/ECG-AI.git
 
-Cloning into 'github-intro'...
-remote: Enumerating objects: 3, done.
-remote: Counting objects: 100% (3/3), done.
-remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-Receiving objects: 100% (3/3), done.
+Cloning into 'ECG-AI'...
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 27 (delta 6), reused 8 (delta 0), pack-reused 0
+Receiving objects: 100% (27/27), 63.51 KiB | 613.00 KiB/s, done.
+Resolving deltas: 100% (6/6), done.
 
-$ cd github-intro2
+$ cd ECG-AI
 ```
 
 Then as a sanity check, let's type the following
@@ -220,43 +237,16 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 ```
 
-Note: Apart from the above method, github provides a few more ways to hook up the remote with local repos. For example, you can also push your local directory with codes to github. 
+Note: Apart from the above method, github provides a few more ways to hook up the remote with local repos. For example, to push your local repository to github from a clean init you might
+use the following commands to 1) add github tracking info, 2) rename the "master" branch to "main", 3) upload or "push" your repository to the url added as the remote in step 1. 
 
 ```
-git remote add origin https://github.com/TeppieC/git-intro.git
+git remote add origin https://github.com/cybera/ECG-AI.git
 git branch -M main
 git push -u origin main
 ```
 
-### Pull
-The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since your last pull/clone, it prompts us with "already up to date". 
 
-```
-$ git pull
-
-Already up to date.
-```
-
-### Push
-Use ```git push``` to upload your local changes (a.k.a. commits) to the remote github repo. 
-
-```
-$ echo "I learned github" > afile.txt
-$ git add afile.txt
-$ git commit -m 'added afile'
-$ git push
-
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 311 bytes | 311.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/TeppieC/github-intro2.git
-   9abb950..8397048  main -> main
-
-```
-Now check your github repo and you will see this commit, so do your teammates.
 
 ## Using branches
 If you're making changes to someone elses repository, or if you're collaborating with someone, or even just trying something new, Git offers a great option called "branch(es)". 
@@ -316,87 +306,40 @@ $ git commit -m 'commiting file to my branch'
  [MyNewBranch eaea361] commiting file to my branch
  1 file changed, 1 insertion(+)
  create mode 100644 myfileinbranch.txt
- 
-$ ls
-README.md	afile.txt myfileinbranch.txt
 
-$ git log
-commit eaea3618370114d5e8243d1c4b355afe5edf0ad7 (HEAD -> MyNewBranch, origin/MyNewBranch)
-Author: Jerric Chen <jerric@Jerrics-MacBook-Air.local>
-Date:   Fri Jul 9 00:43:16 2021 -0600
-
-    commiting file to my branch
-
-commit 839704864b89f519c25bf698e843c4511dd8004c (origin/main, origin/HEAD, main)
-Author: Jerric Chen <jerric@Jerrics-MacBook-Air.local>
-Date:   Fri Jul 9 00:36:40 2021 -0600
-
-    added afile.txt
-
-commit 9abb950249422e54e3931b992cb68e5c9ae85b6d
-Author: TeppieC <TeppieC@users.noreply.github.com>
-Date:   Fri Jul 9 00:29:37 2021 -0600
-
-    Initial commit
 ```
 
 Finally we push: 
 
-```bash 
-$ git push
-
-fatal: The current branch MyNewBranch has no upstream branch.
-To push the current branch and set the remote as upstream, use
-
-    git push --set-upstream origin MyNewBranch
-```
-
-Where oh no! We have an error. This is because we forgot to tell github that we have a new branch locally. We can fix that by doing what many before us have failed to do: Reading the error message and doing exactly what it tells us
-
 ```bash
 $ git push --set-upstream origin MyNewBranch
-
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 358 bytes | 358.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-remote: 
-remote: Create a pull request for 'MyNewBranch' on GitHub by visiting:
-remote:      https://github.com/TeppieC/github-intro2/pull/new/MyNewBranch
-remote: 
-To https://github.com/TeppieC/github-intro2.git
- * [new branch]      MyNewBranch -> MyNewBranch
-Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 ```
+The `--set-upstream origin MyNewBranch` is 
+required only on the first push.
 
-Where we can now check if it worked on Github.
 
-Now, to better observe how branch works, let's try switch back to the main branch where we were initially at
 
-``` 
-$ git checkout main
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
-
-$ ls
-README.md	afile.txt
-
-$ git log 
-commit 839704864b89f519c25bf698e843c4511dd8004c (HEAD -> main, origin/main, origin/HEAD)
-Author: Jerric Chen <jerric@Jerrics-MacBook-Air.local>
-Date:   Fri Jul 9 00:36:40 2021 -0600
-
-    added afile.txt
-
-commit 9abb950249422e54e3931b992cb68e5c9ae85b6d
-Author: TeppieC <TeppieC@users.noreply.github.com>
-Date:   Fri Jul 9 00:29:37 2021 -0600
-
-    Initial commit
+### Pull
+The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since your last pull/clone, it prompts us with "already up to date". 
 
 ```
+$ git pull
+
+Already up to date.
+```
+
+### Push
+Use ```git push``` to upload your local changes (a.k.a. commits) to the remote github repo. 
+
+```
+$ echo "I learned github" > afile.txt
+$ git add afile.txt
+$ git commit -m 'added afile'
+$ git push
+
+```
+Now check your github repo and you will see this commit, so do your teammates.
+
 
 ### Pull request
 Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier.
@@ -406,6 +349,21 @@ If your work is not in conflict with that on the master/main branch, your branch
 
 Merge not only happens in pull request. It can also happen when you are pulling new changes from remote to local or performing local branch merges. That means sometimes you'll have to manually resolve merge conflicts in your terminal. This will open up your vim editor and ask you to address the conflict in a similar way. 
 
+If you do have a conflict that git cannot automatically merge you'll have 
+something like the following in the affected files. It is up 
+to you to replace the content between the angle braces
+and create a version of the file that you want going forward.
+```
+other stuff
+<<<<<<< HEAD:index.html
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+ please contact us at support@github.com
+</div>
+>>>>>>> iss53:index.html
+later stuff
+```
 
 ## Preventing Yourself From Committing Things You Shouldn't
 
