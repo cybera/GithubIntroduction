@@ -3,6 +3,23 @@ Note: this is not an exhaustive tutorial, but should be enough to get you starte
 # Prerequisites
 - Basic unix commands (ls, cd, mkdir, echo, cat) 
 
+# Main Git Commands
+Most of the time you'll be using only these five commands:
+- git add: adds files to "staging area" 
+- git commit: saves files in "staging area"
+- git pull: download changes from remote 
+- git push: upload changes to remote
+- git status: display current information
+
+Less frequently, you'll need to use these as well:
+- git clone: copy an entire repository
+- git log: display historic/version information
+- git branch: create or list repository branches
+- git checkout: retrieve other versions of code
+
+Much of the Git version control can be done through an 
+IDE GUI like VS Code as well as using the command line.
+
 # Installing Git Locally:
 1. MacOS: `brew install git` or `https://sourceforge.net/projects/git-osx-installer/`
 2. Linux
@@ -309,13 +326,6 @@ $ git commit -m 'commiting file to my branch'
 
 ```
 
-Finally we push: 
-
-```bash
-$ git push --set-upstream origin MyNewBranch
-```
-The `--set-upstream origin MyNewBranch` is 
-required only on the first push.
 
 
 
@@ -328,16 +338,19 @@ $ git pull
 Already up to date.
 ```
 
+
+
 ### Push
 Use ```git push``` to upload your local changes (a.k.a. commits) to the remote github repo. 
 
-```
-$ echo "I learned github" > afile.txt
-$ git add afile.txt
-$ git commit -m 'added afile'
-$ git push
+Finally we push: 
 
+```bash
+$ git push --set-upstream origin MyNewBranch
 ```
+The `--set-upstream origin MyNewBranch` is 
+required only on the first push.
+
 Now check your github repo and you will see this commit, so do your teammates.
 
 
@@ -349,7 +362,7 @@ If your work is not in conflict with that on the master/main branch, your branch
 
 Merge not only happens in pull request. It can also happen when you are pulling new changes from remote to local or performing local branch merges. That means sometimes you'll have to manually resolve merge conflicts in your terminal. This will open up your vim editor and ask you to address the conflict in a similar way. 
 
-If you do have a conflict that git cannot automatically merge you'll have 
+If you do have a conflict that Git cannot automatically merge you'll have 
 something like the following in the affected files. It is up 
 to you to replace the content between the angle braces
 and create a version of the file that you want going forward.
