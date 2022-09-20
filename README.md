@@ -1,4 +1,4 @@
-Note: this is not an exhaustive tutorial, but should be enough to get you started. There is A LOT to learn with git, but for the most part, the contents of this tutorial should cover about 90% of the things you as a contributor will need to know.  
+Note: this is not a comprehensive and exhaustive tutorial, but should be enough to get you started.   
 
 # Prerequisites
 - Basic unix commands (ls, cd, mkdir, echo, cat) 
@@ -14,23 +14,23 @@ Note: this is not an exhaustive tutorial, but should be enough to get you starte
 
 Notes:
 
-1. By "locally" we mean on the end of your workspace. If you installed it in your desktop but tried to use it on a VM, it won't work.
-2. Test if you have git already installed: `git --version`
+1. By "locally" we mean the workspace that you're working on. If you installed git in your desktop but use it on a VM, it won't work.
+2. Test if successfully installed: `git --version`
 3. How to install Github? --> you don't have to if you follow this tutorial.
 
 # Version Control
-Let's forget about Github for a bit and only focus on Git at the moment. The most important feature it has is the **version control**. 
+The most important feature of Git is **version control**. 
 
-This feature keeps track of the previous versions of your work, and can revert your project back to previous versions when something went wrong. To better understand this idea, let's take a look at the following **working tree** visualization. 
+It keeps track of the previous versions of your work, and can revert your project back to previous versions when something went wrong. To better understand this idea, let's take a look at the following visualization. 
 
-As shown here, each node in the working tree is a version, which is essentially a snapshot of all files when the node is created. In the git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". Note the English word "commit" can be both a verb and a noun here.
+As shown here, each node in the workflow is a version, which is essentially a snapshot of all files when the node is created. In Git terminology, we call those nodes "**commits**" and the action of creating those nodes as "**commit changes**". This will usually happen when you made a great progress, archived a milestone, or even fixed a bug. Note the word "commit" can be either a verb or a noun here.
 
-![Image of Git working tree](./resources/Git.png)
+![Image of Git workflow](./resources/Git.png)
 
 Let's see how it actually works in the following experiment in my terminal.
 
 ### Init Git, Add and Commit changes
-First, we create a directory and initialize Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
+First, we create a directory and initialize Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). In git terminology, this directory is a "**working directory/tree**". Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
 
 ```
 $ mkdir git-intro
@@ -41,11 +41,11 @@ $ ls -a
 .	..	.git
 ```
 
-Then let's create a few dummy files to play our experiment on.
+Then let's create some dummy files.
 
 ```
-$ echo "file contents" > myfile.txt
-$ echo "other file contents" > myotherfile.txt
+$ echo "hello world" > myfile.txt
+$ echo "hello world again" > myotherfile.txt
 $ ls -a
 .	..	.git      myfile.txt		myotherfile.txt
 ```
@@ -67,9 +67,9 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Now, let's try **track** these two files and commit this change. To commit a change, we have to go through two steps: ```git add``` + ```git commit```.
+Now, let's **track** these two files and commit this change. To commit a change, we need to go through two steps: ```git add``` + ```git commit```.
 
-```git add``` is the command that adds files that you want to track into a "**staging area**". The staging area serves as an intermediate space before you actually commit the changes. You can add new files into, remove files from, and modify files in the staging area without making any actual commit. Once the files are put into the staging area, they are considered as "**tracked**" files.
+```git add``` is the command that adds files that you want to track into a "**staging area/index**". The staging area serves as an intermediate space before you actually commit the changes. You can add new files into, remove files from, and modify files in the staging area without making any actual commit. Once the files are put into the staging area, they are considered as "**tracked**" files.
 
 ```
 $ git add myfile.txt
@@ -86,7 +86,7 @@ Changes to be committed:
 	new file:   myotherfile.txt
 ```
 
-```git commit``` command creates a new commit in the working tree. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More technically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. Note we usually use ```-m``` flag to append some messages to describe what've been done in this commit.
+```git commit``` command creates a new commit. As we introduced before, a commit is essentially a snapshot of every tracked files when the commit is created. More specifically, what this command actually does is to take whatever you put into the staging area and record the changes made on them since the last commit. The files that haven't been put into the staging area (a.k.a untracked files) will be neglected, so their changes won't be recorded by this commit. Note we usually use ```-m``` flag to append some messages to describe what've been done in this commit.
 
 ```
 $ git commit -m 'created two txt files'
@@ -97,7 +97,7 @@ $ git commit -m 'created two txt files'
  create mode 100644 myotherfile.txt
 ```
 
-Use ```git log``` to check the commit history. Where you may have to press enter to scroll to the bottom, and press `q` to quit. Above we see a complete list of all the changes that we have made, as well as the unique hash id of each commit. This hash id becomes important later. But essentially what we have here is a list of changes made, when they were made, and by whom they were made.
+Use ```git log``` to check the commit history. You may have to press enter to scroll to the bottom, and press `q` to quit. Above we see a complete list of all the changes that we have made, as well as the unique hash id of each commit. What we have here tells us the files change history, when the changes were made, and by whom they were made.
 
 ```
 $ git log
@@ -116,7 +116,7 @@ Now, to demostrate how this version control can work, let's change our files a l
 
 ```
 $ echo "adding other stuff" >> myfile.txt
-$ echo “also here” >> myotherfile.txt
+$ echo “same here” >> myotherfile.txt
 $ git add myfile.txt
 $ git add myotherfile.txt
 $ git commit -m 'made changes to the two files'
@@ -124,37 +124,36 @@ $ git commit -m 'made changes to the two files'
  2 files changed, 2 insertions(+)
 ```
 
-Now, since we have two commits, let's experiment on the roll-back feature: Suppose you made some more changes to myfile.txt beyond our last commit and are not satisfied with our recent change, you can easily recover this single file with `git checkout` as follows
+Now, since we have two commits, let's experiment on the **roll-back** feature: Suppose you made some more changes to myfile.txt beyond our last commit and are not satisfied with our recent change, and most importantly, you **haven't** committed this change, then you can easily recover this single file with `git checkout` as follows
 
 ```
 $ echo "adding other stuff for the second time" >> myfile.txt 
 
 $ cat myfile.txt
-file contents
+hello world
 adding other stuff
 adding other stuff for the second time
 
-$ git checkout myfile.txt
+$ git checkout -- myfile.txt
 
 Updated 1 path from the index
 ```
 
-Note that one file will now be returned to the most recent commit on your **working tree**. 
+You can see that your changes have been reverted in your **working directory**. Neat! 
+
 
 ```
 $ cat myfile.txt
-file contents
+hello world
 adding other stuff
 ```
 
-For larger mistakes, you may have to revert your whole local project to a previous commit with the following steps:
+Internally, ```git checkout``` restores your files to match with the **staging area**. Since the staging area happens to have just been synced with the snapshot of your last commit when you committed last time, what you essentially see here is that you have rolled-back to the last commit. 
+
+So, what about committed changes? If undesired changes are committed, we can jump back to a previous commit to "cancel" it! Now it's recommended to use ```git reset``` or ```git revert``` ([difference](https://images.app.goo.gl/QrBscJmeFxi5pd2EA)). Let's use `git reset` as an example:
 
 - Step 1: Find the hash id of a good commit from the output of `git log`
-- Step 2: reset to this version
 
-Where the output is telling you the commit message of the commit we have now returned to. This will have removed all local changes before hand, but will take you back to a place where hopefully things were functional.
-
-How do we trace back to previous versions then? Suppose you are not satisfied with the recent change to myfile.txt and want to roll back to the previous version, all you need is to 
 
 ```bash
 $ git log
@@ -170,17 +169,20 @@ Author: TeppieC <jerric.chen@cybera.ca>
 Date:   Mon Jul 19 16:16:52 2021 -0600
 
     created two txt files
-    
+```
+- Step 2: reset to this version with `--hard` argument and the commit's hash id.
+
+```
 $ git reset --hard cf34f6a0f371b048527a6eec41dc441ac4510e7e
 
 HEAD is now at a98898c created two txt files
 
 $ cat myfile.txt
-
-file contents
+hello world
 ```
+Now everything is back to what it used to look like in our previous commit. Note if you are collaborating with teammates on a project, it's more recommended to use `git revert` than `git reset` as the latter will discard commits and disturb your teammate's work.
 
-So the rule of thumb is "commit often" because when some parts of your work went wrong, you can always rely on this benefit of git to roll back your project to a previous commit and start over. 
+In summary, the rule of thumb of using Git is "**commit often**" because when some parts of your work went wrong, you can always rely on this benefit of git to roll back your project to a previous commit and start over. 
 
 Till now, we are solely working locally. In the next section, let's talk about working remotely with the help from Github.
 
@@ -192,13 +194,13 @@ Github is an extension of Git. It is a open-source community where you can share
 ### Creating a repo
 Github manages software projects in the way of **repo(es)**. To host your code on github and collaborate with your teammates, you'll need to create a **remote** repo that is at least accessible to your teammates. They are default to be public repos so that every one can see it. With github student pack, you can create private repos and share it only to your collaborators.
 
-Now let's try to create a repo.
+Now let's try to create a repo named "git-intro".
 
 ### Clone
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
 
 ```bash
-$ git clone https://github.com/TeppieC/git-intro2.git
+$ git clone https://github.com/TeppieC/git-intro.git
 
 Cloning into 'github-intro'...
 remote: Enumerating objects: 3, done.
@@ -206,10 +208,10 @@ remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 
-$ cd github-intro2
+$ cd github-intro
 ```
 
-Then as a sanity check, let's type the following
+You don't need to do `git init` for repos created from github as they are automatically initialized as git repos. As a sanity check, let's type the following
 
 ```bash
 $ git status
@@ -220,16 +222,8 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 ```
 
-Note: Apart from the above method, github provides a few more ways to hook up the remote with local repos. For example, you can also push your local directory with codes to github. 
-
-```
-git remote add origin https://github.com/TeppieC/git-intro.git
-git branch -M main
-git push -u origin main
-```
-
 ### Pull
-The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since your last pull/clone, it prompts us with "already up to date". 
+The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since our last pull/clone, it prompts us with "already up to date". 
 
 ```
 $ git pull
@@ -252,7 +246,7 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 311 bytes | 311.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/TeppieC/github-intro2.git
+To https://github.com/TeppieC/github-intro.git
    9abb950..8397048  main -> main
 
 ```
@@ -263,7 +257,7 @@ If you're making changes to someone elses repository, or if you're collaborating
 
 ![Demo of branch](./resources/Github.png)
 
-To see all available branches. You will notice some of them are local branches and some are remote ones. 
+To see all available branches. 
 
 ```bash
 $ git branch -a
@@ -272,6 +266,8 @@ $ git branch -a
   remotes/origin/HEAD -> origin/main
   remotes/origin/main
 ```
+
+Note there are some of them are local branches and some are remote ones. The asterisk sign indicates that we are currently on a "main" branch. "remotes/origin" is our github repo, it also has a main branch, which could sometimes becomes inconsistent with our local main branch.
 
 To create a new branch just for you
 
@@ -318,7 +314,7 @@ $ git commit -m 'commiting file to my branch'
  create mode 100644 myfileinbranch.txt
  
 $ ls
-README.md	afile.txt myfileinbranch.txt
+LICENSE afile.txt myfileinbranch.txt
 
 $ git log
 commit eaea3618370114d5e8243d1c4b355afe5edf0ad7 (HEAD -> MyNewBranch, origin/MyNewBranch)
@@ -351,7 +347,7 @@ To push the current branch and set the remote as upstream, use
     git push --set-upstream origin MyNewBranch
 ```
 
-Where oh no! We have an error. This is because we forgot to tell github that we have a new branch locally. We can fix that by doing what many before us have failed to do: Reading the error message and doing exactly what it tells us
+Okay now git is complaining an issue here. This is because we forgot to tell github that we have a new branch locally. We can fix that by doing what many before us have failed to do: Reading the error message and doing exactly what it tells us
 
 ```bash
 $ git push --set-upstream origin MyNewBranch
@@ -370,10 +366,9 @@ To https://github.com/TeppieC/github-intro2.git
  * [new branch]      MyNewBranch -> MyNewBranch
 Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 ```
+Now if we go back to github, you'll see we have a new branch with updated files there.
 
-Where we can now check if it worked on Github.
-
-Now, to better observe how branch works, let's try switch back to the main branch where we were initially at
+To better observe how branch works, let's try switch back to the main branch where we were initially at
 
 ``` 
 $ git checkout main
@@ -397,6 +392,7 @@ Date:   Fri Jul 9 00:29:37 2021 -0600
     Initial commit
 
 ```
+The new file doesn't exist in the main branch, so does the new commit.
 
 ### Pull request
 Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier.
@@ -409,22 +405,7 @@ Merge not only happens in pull request. It can also happen when you are pulling 
 
 ## Preventing Yourself From Committing Things You Shouldn't
 
-Suppose we have all our passwords stored in a file in our git directory. It would be a very bad idea to commit that. For example, suppose our directory looks like this: 
-
-```bash
-$ git status
-
-On branch MyNewBranch
-Your branch is up to date with 'origin/MyNewBranch'.
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        all_my_passwords.txt
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-Where the contents of `all_my_passwords.txt` is as follows:
+Suppose we have all our passwords stored in a file in our git directory. It would be a very bad idea to commit that. For example, let's have a `all_my_passwords.txt` as follows:
 
 ```
 netflix: SuperSecretSuperSecurePasswordIHopeNoOneGetsToReadThatWouldBeBad
@@ -432,20 +413,16 @@ netflix: SuperSecretSuperSecurePasswordIHopeNoOneGetsToReadThatWouldBeBad
 
 We certainly don't want to commit that. But sometimes we need to have our passwords to access data/other resources. How do we make sure we don't accidentally send these to github?
 
-With a "hidden" file called `.gitignore` , where we can list the files, directories, or filetypes that we don't want to commit to github. So let's create that 
+With a "hidden" file called `.gitignore` , where we can list the files, directories, or filetypes that we don't want to commit to github. Now let's create it! 
 
 ```bash
 $ echo "all_my_passwords.txt" >> .gitignore
 
-# We can also ignore specific file types, for example, pdfs
-$ echo "*.pdf" >> .gitignore 
-
 $ cat .gitignore
 all_my_passwords.txt
-*.pdf
 ```
 
-And now, if we type `git status` we will see that out passwords are still untracked. However, if we commit this to git 
+Let's commit this to git 
 
 ```bash
 $ git add .gitignore
@@ -453,25 +430,16 @@ $ git commit -m "adding files to ignore on git"
 $ git push
 ```
 
-Now, if we type `git status`:
-
-```bash
-$ git status
-
-On branch MyNewBranch
-Your branch is up to date with 'origin/MyNewBranch'.
-
-nothing to commit, working tree clean
-```
-
-We can no longer see our secret password file. As well, there are some protections build in to prevent us from accidentally commiting this file now
+Protections are built to prevent us from accidentally commiting this file now
 
 ```bash
 $ git add all_my_passwords.txt
 
 The following paths are ignored by one of your .gitignore files:
 all_my_passwords.txt
-Use -f if you really want to add them.
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
 ```
 
 # Github desktop
