@@ -1,7 +1,7 @@
 Note: this is not a comprehensive and exhaustive tutorial, but should be enough to get you started.   
 
 # Prerequisites
-- Basic unix commands (ls, cd, mkdir, echo, cat) 
+- Basic unix commands (ls, cd, mkdir, echo, cat) on terminals
 
 # Installing Git Locally:
 1. MacOS: `brew install git` or `https://sourceforge.net/projects/git-osx-installer/`
@@ -27,7 +27,7 @@ As shown here, each node in the workflow is a version, which is essentially a sn
 
 ![Image of Git workflow](./resources/Git.png)
 
-Let's see how it actually works in the following experiment in my terminal.
+To see how it actually works in the following experiment, let's open up a command line interface application like Terminal (MacOS or Linux), Command Prompt or similar (Windows) or launch VS Code and open a Terminal.
 
 ### Init Git, Add and Commit changes
 First, we create a directory and initialize Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). In git terminology, this directory is a "**working directory/tree**". Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
@@ -197,10 +197,10 @@ Github manages software projects in the way of **repo(es)**. To host your code o
 Now let's try to create a repo named "git-intro".
 
 ### Clone
-The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: you may be prompted to enter a username/password.):
+The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: please substitube content in bracket with your github username and you may be prompted to enter a username/password if this is a private repo.):
 
 ```bash
-$ git clone https://github.com/TeppieC/git-intro.git
+$ git clone https://github.com/[YOUR_GITHUB_USERNAME]/git-intro.git
 
 Cloning into 'github-intro'...
 remote: Enumerating objects: 3, done.
@@ -392,13 +392,15 @@ Date:   Fri Jul 9 00:29:37 2021 -0600
     Initial commit
 
 ```
-The new file doesn't exist in the main branch, so does the new commit.
+The new file doesn't exist in the main branch, and neither does the new commit.
 
 ### Pull request
-Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier.
+Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier. For more on pull request, check [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#creating-the-pull-request).
+
+![image](https://user-images.githubusercontent.com/11369685/193443659-5ff9fb19-879a-4f86-9063-f44c797612b0.png)
 
 ### Merge
-If your work is not in conflict with that on the master/main branch, your branch **merge** to the master branch should work smoothly. That means you only need to click on the "merge" button to complete the process. However, sometimes your teammates are also working on the same file as you're working on it, and they merged to the master branch earlier than you, then you will have **conflict** and won't benefit from this "auto-merge" anymore. The proper way to solve this is to manually resolve the conflict. Let's see how to do that on github.
+If your work is not in conflict with that on the master/main branch, your branch **merge** to the master branch should work smoothly. That means you only need to click on the "merge" button to complete the process. However, sometimes your teammates are also working on the same file as you're working on it, and they merged to the master branch earlier than you, then you will have **conflict** and won't benefit from this "auto-merge" anymore. The proper way to solve this is to manually resolve the conflict. Let's see how to do that on github. Note in group projects, merging to master usually requires an approval from other team members, you can ask someone from the team to review your changes (you can request a reviewer when creating the pull request) to make sure your changes are functional and complete.
 
 Merge not only happens in pull request. It can also happen when you are pulling new changes from remote to local or performing local branch merges. That means sometimes you'll have to manually resolve merge conflicts in your terminal. This will open up your vim editor and ask you to address the conflict in a similar way. 
 
