@@ -192,13 +192,13 @@ Github is an extension of Git. It is a open-source community where you can share
 ### Creating a repo
 Github manages software projects in the way of **repo(es)**. To host your code on github and collaborate with your teammates, you'll need to create a **remote** repo that is at least accessible to your teammates. They are default to be public repos so that every one can see it. With github student pack, you can create private repos and share it only to your collaborators.
 
-Now let's try to create a repo named "git-intro".
+Now let's try to create a repo named "github-intro".
 
 ### Clone
 The clone command lets you have a **local** copy of the remote repo on github. To clone the repo we just created, open a terminal and navigate to a directory you would like this repo to live, then type (note: please substitube content in bracket with your github username and you may be prompted to enter a username/password if this is a private repo.):
 
 ```bash
-$ git clone https://github.com/[YOUR_GITHUB_USERNAME]/git-intro.git
+$ git clone https://github.com/[YOUR_GITHUB_USERNAME]/github-intro.git
 
 Cloning into 'github-intro'...
 remote: Enumerating objects: 3, done.
@@ -221,7 +221,7 @@ nothing to commit, working tree clean
 ```
 
 ### Pull
-The pull command fetches the newest updates (from your collaborator's changes) from the remote and merge that update to your local instance. Because no one has been working on this project since our last pull/clone, it prompts us with "already up to date". 
+The pull command fetches the newest updates (from your collaborator's changes) from the remote (github repo) and merge that update to your local (the local directory that you just cloned from github). Because no one has been working on this project since our last pull/clone, it prompts us with "already up to date". 
 
 ```
 $ git pull
