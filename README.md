@@ -27,7 +27,7 @@ As shown here, each node in the workflow is a version, which is essentially a sn
 
 ![Image of Git workflow](./resources/Git.png)
 
-To see how it actually works in the following experiment, let's open up a command line interface application like Terminal (MacOS or Linux), Command Prompt or similar (Windows) or launch VS Code and open a Terminal.
+In the following experiment, let's open up a command line interface application like Terminal (MacOS or Linux), Command Prompt or similar (Windows) or launch VS Code and open a Terminal.
 
 ### Init Git, Add and Commit changes
 First, we create a directory and initialize Git in it. The ```git init``` command tells git to treat your current directory as a git repo(sitory). In git terminology, this directory is a "**working directory/tree**". Git will create a hidden folder called ".git" in the current directory. Note this is an one-time-only command: once a git repo is established, you don't need to re-init it every time you commit changes.
