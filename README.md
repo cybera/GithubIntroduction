@@ -447,4 +447,4 @@ https://desktop.github.com/
 # Additional resources
 - A useful cheatsheet: http://rogerdudler.github.io/git-guide/
 - The git documentation is always your best friend: https://git-scm.com/docs
-
+- A practice playground: https://www.datacamp.com/courses/introduction-to-version-control-with-git
