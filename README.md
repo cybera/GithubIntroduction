@@ -1,16 +1,14 @@
 Note: this is not a comprehensive and exhaustive tutorial, but should be enough to get you started.   
 
 # Prerequisites
-- Basic unix commands (ls, cd, mkdir, echo, cat) on terminals
+- Basic unix commands (ls, cd, mkdir, pwd, echo, cat) on terminals
 
 # Installing Git Locally:
 1. MacOS: `brew install git` or `https://sourceforge.net/projects/git-osx-installer/`
 2. Linux
     * debian based: `sudo apt install git`
     * Fedora based: `sude dnf install git`
-    * Other: You don't need this tutorial, and should probably be the one teaching it.
 3. Windows: `https://git-scm.com/download/win`
-
 
 Notes:
 
