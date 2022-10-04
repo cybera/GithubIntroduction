@@ -358,9 +358,9 @@ Writing objects: 100% (3/3), 358 bytes | 358.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 remote: 
 remote: Create a pull request for 'MyNewBranch' on GitHub by visiting:
-remote:      https://github.com/TeppieC/github-intro2/pull/new/MyNewBranch
+remote:      https://github.com/TeppieC/github-intro/pull/new/MyNewBranch
 remote: 
-To https://github.com/TeppieC/github-intro2.git
+To https://github.com/TeppieC/github-intro.git
  * [new branch]      MyNewBranch -> MyNewBranch
 Branch 'MyNewBranch' set up to track remote branch 'MyNewBranch' from 'origin'.
 ```
@@ -393,7 +393,7 @@ Date:   Fri Jul 9 00:29:37 2021 -0600
 The new file doesn't exist in the main branch, and neither does the new commit.
 
 ### Pull request
-Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting your ideas, it's important to write on your own branch so that your changes won't affect others' work. When you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is essentially a process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. Though PR can be made using command line, I'm showing you how to do it through github as it's simplier and easier. For more on pull request, check [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#creating-the-pull-request).
+Different branches serve different purposes. Conventionally, the **master/main** branch is where you publish releases. In smaller projects, this can also be a place where stable and working code stays at. If you are still experimenting with your ideas, it's important to write on your own branch (i.e. **dev**) so that your changes won't affect others' work. Once you are done, it's time to merge your code on your own branch to the master/main branch, we do it through a process called **pull request (PR)**. Pull request is a collaborative process where your teammates can step in and review your work so that your mistake will be caught before it ruining the whole project. For more on pull request, check [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#creating-the-pull-request).
 
 ![image](https://user-images.githubusercontent.com/11369685/193443659-5ff9fb19-879a-4f86-9063-f44c797612b0.png)
 
