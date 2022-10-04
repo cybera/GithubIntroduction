@@ -427,7 +427,6 @@ Let's commit this to git
 ```bash
 $ git add .gitignore
 $ git commit -m "adding files to ignore on git" 
-$ git push
 ```
 
 Protections are built to prevent us from accidentally commiting this file now
